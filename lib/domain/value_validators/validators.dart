@@ -4,7 +4,8 @@ import 'package:kt_dart/collection.dart';
 import '../failures.dart';
 
 Either<ValueFailure<String>, String> validateEmailAddress(String input) {
-  const emailRegex = r"""^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+""";
+  const emailRegex =
+      r"""^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+""";
   if (RegExp(emailRegex).hasMatch(input)) {
     return right(input);
   } else {
@@ -20,11 +21,13 @@ Either<ValueFailure<String>, String> validatePassword(String input) {
   }
 }
 
-Either<ValueFailure<String>, String> validateMaxStringLength(String input, int maxLength) {
-  if (input.length <=  maxLength) {
+Either<ValueFailure<String>, String> validateMaxStringLength(
+    String input, int maxLength) {
+  if (input.length <= maxLength) {
     return right(input);
   } else {
-    return left(ValueFailure.exceedingLength(failedValue: input, max: maxLength));
+    return left(
+        ValueFailure.exceedingLength(failedValue: input, max: maxLength));
   }
 }
 
@@ -44,7 +47,8 @@ Either<ValueFailure<String>, String> validateSingleLine(String input) {
   }
 }
 
-Either<ValueFailure<KtList<T>>, KtList<T>> validateMaxListLength<T>(KtList<T> input, int maxLength) {
+Either<ValueFailure<KtList<T>>, KtList<T>> validateMaxListLength<T>(
+    KtList<T> input, int maxLength) {
   if (input.size <= maxLength) {
     return right(input);
   } else {
